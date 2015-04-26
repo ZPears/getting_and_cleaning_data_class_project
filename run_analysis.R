@@ -46,9 +46,15 @@ allData <- merged[,!grepl("V2", colnames(merged))]
 allData <- allData[order(allData$subject_id, allData$activity),]
 allData <- melt(allData, id=c("activity", "subject_id"))
 tidyData <- dcast(allData, activity+subject_id ~ variable, mean)
+
+#cleans up column names
 names(tidyData) <- sub("\\(\\)","",names(tidyData))
 names(tidyData) <- sub("-",", ", names(tidyData))
 names(tidyData) <- sub("-",", ", names(tidyData))
+names(tidyData) <- sub("Acc",", Acc, ", names(tidyData))
+names(tidyData) <- sub("Gyro",", Gyro, ", names(tidyData))
+names(tidyData) <- sub("^f","f, ", names(tidyData))
+names(tidyData) <- sub("^t","t, ", names(tidyData))
 
 #write tidy data frame
 write.table(tidyData, file="results.txt", sep="\t", row.names = FALSE, col.names = TRUE)

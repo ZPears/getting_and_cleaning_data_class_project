@@ -20,7 +20,7 @@ Each observation has 66 measurements, contained in columns 3:68.
 
 ## Results .txt measurements
 
-The individual measurement column names consist of six comma separated items. These are **signal type**, **acceleration type**, **instrument**, **calculation type**, **original measurement** and **dimension**. Dimension is only present where relevant.
+The individual measurement column names consist of six separate items. These are **signal type**, **acceleration type**, **instrument**, **calculation type**, **original measurement** and **dimension**. Dimension is only present where relevant.
 
 **Signal type** is either "t" or "f". "t" represents time domain signals, and "f" represents signals that have had a Fast Fourier Transform (FFT) applied.
 

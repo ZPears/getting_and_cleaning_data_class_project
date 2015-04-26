@@ -1,3 +1,7 @@
+#loads libraries
+library(reshape2)
+library(data.table)
+
 #reads in feature names
 feature_names <- read.table("UCI_HAR_Dataset/features.txt")
 feature_names <- as.character(feature_names$V2)
@@ -37,3 +41,14 @@ merged <- merge(allData, labels, by.x="activity_id", by.y ="V1")
 names(merged)[1] <- "activity"
 merged$activity <- merged$V2
 allData <- merged[,!grepl("V2", colnames(merged))]
+
+#create tidy data frame
+allData <- allData[order(allData$subject_id, allData$activity),]
+allData <- melt(allData, id=c("activity", "subject_id"))
+tidyData <- dcast(allData, activity+subject_id ~ variable, mean)
+names(tidyData) <- sub("\\(\\)","",names(tidyData))
+names(tidyData) <- sub("-",", ", names(tidyData))
+names(tidyData) <- sub("-",", ", names(tidyData))
+
+#write tidy data frame
+write.table(tidyData, file="results.txt", sep="\t", row.names = FALSE, col.names = TRUE)

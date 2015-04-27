@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The dataset produced by run_analysis.R (results.R) is a data frame containing the means of all mean and standard deviation measurements made by accelerometers and gyrometers in personal fitness tracking equipment.
+The dataset produced by run_analysis.R (results.txt) is a data frame containing the means of all mean and standard deviation measurements made by accelerometers and gyrometers in personal fitness tracking equipment.
 
 The data are subsetted into individual observations based on the activity level of the subject and the subject's unique ID. 
 
-## Results .txt observations
+## Results.txt observations
 
 Each row represents a set of measurements for a given activity level and a given subject.
 
@@ -18,7 +18,7 @@ The subject and activity level combinations (e.g., "WALKING" + 6, "LAYING" + 4) 
 
 Each observation has 66 measurements, contained in columns 3:68.
 
-## Results .txt measurements
+## Results.txt measurements
 
 The individual measurement column names consist of six separate items. These are **signal type**, **acceleration type**, **instrument**, **calculation type**, **original measurement** and **dimension**. Dimension is only present where relevant.
 
